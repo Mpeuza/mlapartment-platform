@@ -1,6 +1,8 @@
 "use client";
 
 import { useState } from "react";
+import PhoneInput from "react-phone-number-input";
+import "react-phone-number-input/style.css";
 
 type Listing = { id: string; address: string; monthly_rent: number };
 
@@ -48,7 +50,13 @@ export default function ApplyForm({ listing }: { listing: Listing }) {
         <div className="mt-4 grid gap-4">
           <input placeholder="Full name" value={form.fullName} onChange={(e) => update("fullName", e.target.value)} className="rounded-lg border border-line px-3 py-2 outline-none focus:border-ink" />
           <input placeholder="Email" type="email" value={form.email} onChange={(e) => update("email", e.target.value)} className="rounded-lg border border-line px-3 py-2 outline-none focus:border-ink" />
-          <input placeholder="Phone (WhatsApp number)" value={form.phone} onChange={(e) => update("phone", e.target.value)} className="rounded-lg border border-line px-3 py-2 outline-none focus:border-ink" />
+          <PhoneInput
+            international
+            defaultCountry="ZA"
+            placeholder="Phone (WhatsApp number)"
+            value={form.phone}
+            onChange={(value) => update("phone", value || "")}
+          />
           <input placeholder="Employment / income info" value={form.employmentInfo} onChange={(e) => update("employmentInfo", e.target.value)} className="rounded-lg border border-line px-3 py-2 outline-none focus:border-ink" />
           <label className="text-sm text-ink/60">
             Preferred move-in date
@@ -66,11 +74,10 @@ export default function ApplyForm({ listing }: { listing: Listing }) {
     <div className="rounded-2xl border border-line bg-white p-6">
       <h2 className="font-display text-xl">Lease terms</h2>
       <div className="mt-4 max-h-64 overflow-y-auto rounded-lg border border-line bg-paper p-4 text-sm text-ink/70">
-        {/* TODO: replace with your real lease agreement text, or generate per-listing */}
         <p>
           This is placeholder lease text for {listing.address}. Monthly rent is
           R {listing.monthly_rent}. Replace this block with your actual lease
-          agreement. For a legally binding e-signature (not just a checkbox),
+          agreement, for a legally binding e-signature (not just a checkbox),
           consider a provider like SignWell or DocuSign later.
         </p>
       </div>

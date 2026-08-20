@@ -59,3 +59,36 @@ html {
 .map-pulse {
   animation: pingSlow 2.5s cubic-bezier(0, 0, 0.2, 1) infinite;
 }
+
+
+.PhoneInput {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  border: 1px solid #E4E1D9;
+  border-radius: 0.5rem;
+  padding: 0.625rem 1rem;
+}
+
+.PhoneInput:focus-within {
+  border-color: #0F1B2D;
+}
+
+.PhoneInputInput {
+  flex: 1;
+  border: none;
+  outline: none;
+  font-size: inherit;
+  font-family: inherit;
+}
+
+.PhoneInputCountrySelect {
+  border: none;
+  background: transparent;
+  outline: none;
+}
+
+.PhoneInputCountryIcon {
+  width: 1.3em;
+  height: 1em;
+}
